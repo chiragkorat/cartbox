@@ -1,0 +1,85 @@
+@use "../abstracts/functions" as functions;
+@use "../abstracts/mixins" as mixins;
+
+.c-panel {
+  @include mixins.display-flex(center, center);
+  @include mixins.center-block(functions.rem(1280px));
+
+  width: 100%;
+
+  &--direction {
+    &-left {
+      flex-direction: column-reverse;
+
+      @include mixins.breakpoint("md") {
+        flex-direction: row-reverse;
+      }
+    }
+
+    &-right {
+      flex-direction: column;
+
+      @include mixins.breakpoint("md") {
+        flex-direction: row;
+      }
+    }
+  }
+
+  &__content {
+    @include mixins.display-flex(flex-start, space-between);
+
+    flex-direction: column;
+    gap: functions.rem(64px);
+    max-width: functions.rem(720px);
+    padding: functions.rem(48px) functions.rem(24px);
+    width: 100%;
+
+    @include mixins.breakpoint("md") {
+      padding: functions.rem(72px) functions.rem(84px);
+      height: functions.rem(603px);
+    }
+
+    div {
+      width: 100%;
+    }
+  }
+
+  &__title {
+    @include mixins.font-size-line-height(functions.rem(20px), functions.rem(28px));
+
+    color: functions.css-color("primary");
+    font-weight: functions.css-weight("thin");
+    margin-bottom: functions.rem(25px);
+    text-align: start;
+
+    @include mixins.breakpoint("md") {
+      @include mixins.font-size-line-height(functions.rem(24px), functions.rem(32px));
+    }
+  }
+
+  &__description {
+    @include mixins.font-size-line-height(functions.rem(14px), functions.rem(22px));
+
+    color: functions.css-color("secondary");
+    font-weight: functions.css-weight("thin");
+    text-align: start;
+
+    @include mixins.breakpoint("md") {
+      @include mixins.font-size-line-height(functions.rem(16px), functions.rem(24px));
+    }
+  }
+
+  &__figure {
+    height: functions.rem(603px);
+    max-width: functions.rem(720px);
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

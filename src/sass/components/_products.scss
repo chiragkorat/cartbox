@@ -1,0 +1,92 @@
+@use "../abstracts/functions" as functions;
+@use "../abstracts/mixins" as mixins;
+
+.c-products {
+  @include mixins.center-block(functions.rem(1280px));
+  @include mixins.display-flex(center, center);
+  @include mixins.padding-x(functions.rem(24px));
+  @include mixins.padding-y(functions.rem(25px));
+
+  flex-direction: column;
+  gap: functions.rem(40px);
+
+  @include mixins.breakpoint("md") {
+    @include mixins.padding-y(functions.rem(80px));
+  }
+
+  @include mixins.breakpoint("xl") {
+    @include mixins.padding-x(0);
+  }
+
+  &__wrapper {
+    display: grid;
+    gap: functions.rem(32px) functions.rem(16px);
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+
+    @include mixins.breakpoint("md") {
+      @include mixins.display-flex(flex-start, space-between);
+
+      gap: functions.rem(20px);
+    }
+
+    &--columns {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+
+      article:first-of-type {
+        grid-area: 1 / 1 / 2 / 3;
+        max-width: 100%;
+      }
+
+      @include mixins.breakpoint("md") {
+        gap: functions.rem(20px);
+        grid-template-columns: repeat(4, 1fr);
+
+        article:first-of-type {
+          grid-area: 1 / 1 / 2 / 3;
+          max-width: 100%;
+        }
+      }
+
+      &-list {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+
+        @include mixins.breakpoint("smx") {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include mixins.breakpoint("md") {
+          grid-template-columns: repeat(3, 1fr);
+        }
+
+        @include mixins.breakpoint("lg") {
+          gap: functions.rem(20px);
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+    }
+  }
+
+  &__title {
+    @include mixins.display-flex(center, flex-start);
+    @include mixins.font-size-line-height(functions.rem(20px), functions.rem(28px));
+
+    color: functions.css-color("primary");
+    font-weight: functions.css-weight("thin");
+    width: 100%;
+
+    span {
+      width: 100%;
+    }
+
+    @include mixins.breakpoint("md") {
+      @include mixins.font-size-line-height(functions.rem(32px), functions.rem(40px));
+
+      span {
+        max-width: functions.rem(600px);
+      }
+    }
+  }
+}

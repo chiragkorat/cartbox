@@ -1,0 +1,112 @@
+@use "../abstracts/functions" as functions;
+@use "../abstracts/mixins" as mixins;
+
+.c-hero {
+  @include mixins.center-block(functions.rem(1280px));
+  @include mixins.display-flex(center, center);
+
+  background-color: functions.css-color("primary");
+  width: 100%;
+
+  @include mixins.breakpoint("md") {
+    height: functions.rem(584px);
+
+    @include mixins.margin-y(functions.rem(60px));
+  }
+
+  .c-button {
+    background: rgb(249 249 249 / 15%);
+
+    a {
+      color: functions.css-color("white");
+    }
+  }
+
+  &__content {
+    @include mixins.width-height(100%);
+
+    flex-direction: column;
+    padding: functions.rem(40px) functions.rem(24px);
+
+    >div {
+      width: 100%;
+    }
+
+    @include mixins.breakpoint("md") {
+      @include mixins.display-flex(center, space-between);
+
+      padding: functions.rem(60px);
+      width: auto;
+    }
+
+    @include mixins.breakpoint("lg") {
+      min-width: functions.rem(760px);
+    }
+  }
+
+  &__title {
+    @include mixins.font-size-line-height(functions.rem(32px), functions.rem(40px));
+
+    color: functions.css-color("white");
+    font-weight: functions.css-weight("thin");
+    margin-bottom: functions.rem(80px);
+
+    @include mixins.breakpoint("md") {
+      margin-bottom: functions.rem(41px);
+    }
+  }
+
+  &__button {
+    display: none;
+    width: 100%;
+
+    @include mixins.breakpoint("md") {
+      display: block;
+    }
+
+    &--desktop {
+      display: block;
+      width: 100%;
+
+      @include mixins.breakpoint("md") {
+        display: none;
+      }
+    }
+  }
+
+  &__description {
+    @include mixins.font-size-line-height(functions.rem(18px), functions.rem(26px));
+
+    color: functions.css-color("white");
+    font-weight: functions.css-weight("thin");
+    margin-bottom: functions.rem(32px);
+    width: 100%;
+
+    @include mixins.breakpoint("md") {
+      margin-bottom: 0;
+    }
+  }
+
+  &__figure {
+    @include mixins.width-height(100%);
+
+    display: none;
+    max-width: functions.rem(520px);
+    overflow: hidden;
+
+    @include mixins.breakpoint("md") {
+      display: block;
+    }
+
+    @include mixins.breakpoint("lg") {
+      display: block;
+      min-width: functions.rem(520px);
+    }
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

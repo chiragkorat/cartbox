@@ -1,0 +1,98 @@
+@use "../abstracts/functions" as functions;
+@use "../abstracts/mixins" as mixins;
+
+.c-footer {
+  @include mixins.display-flex(flex-start, space-between);
+
+  background-color: functions.css-color("primary");
+  padding: functions.rem(40px) functions.rem(25px);
+  width: 100%;
+  flex-direction: column;
+
+  @include mixins.breakpoint("md") {
+    padding: functions.rem(40px) functions.rem(85px);
+  }
+
+  &__container {
+    @include mixins.center-block(functions.rem(1280px));
+    @include mixins.display-flex(flex-start, space-between);
+
+    flex-direction: column;
+    gap: functions.rem(48px);
+    width: 100%;
+
+    @include mixins.breakpoint("lg") {
+      flex-direction: row;
+    }
+  }
+
+  &__wrapper {
+    display: grid;
+    gap: functions.rem(40px) functions.rem(55px);
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: flex-start;
+
+    @include mixins.breakpoint("smx") {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include mixins.breakpoint("md") {
+      @include mixins.display-flex(flex-start, center);
+
+      gap: functions.rem(130px);
+    }
+  }
+
+  &__logo {
+    margin-bottom: functions.rem(16px);
+  }
+
+  &__title {
+    @include mixins.font-size-line-height(functions.rem(16px), functions.rem(20px));
+
+    color: functions.css-color("white");
+    font-weight: functions.css-weight("thin");
+    margin-bottom: functions.rem(14px);
+  }
+
+  &__unlist {
+    @include mixins.list-unstyled;
+  }
+
+  &__content {
+    p {
+      margin-bottom: functions.rem(12px);
+    }
+  }
+
+  &__item,
+  &__content {
+    margin-bottom: functions.rem(12px);
+
+    a,
+    p {
+      @include mixins.font-size-line-height(functions.rem(14px),
+      functions.rem(22px));
+
+      color: functions.css-color("white");
+      text-decoration: none;
+    }
+  }
+
+  &__credits {
+    @include mixins.center-block(functions.rem(1280px));
+    @include mixins.font-size-line-height(functions.rem(14px), functions.rem(22px));
+
+    border-top: functions.rem(1px) solid functions.css-color("quinquenary");
+    color: functions.css-color("white");
+    font-weight: functions.css-weight("thin");
+    margin-top: functions.rem(36px);
+    padding-top: functions.rem(16px);
+    text-align: center;
+    width: 100%;
+
+    @include mixins.breakpoint("md") {
+      text-align: start;
+    }
+  }
+}
